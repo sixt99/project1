@@ -6,9 +6,4 @@ public class Main {
 		System.out.println("Hello");
 	}
 
-	// Tarragona1
-	// Tarragona2
-	// Tarragona3
-
-	// caca1
 }
