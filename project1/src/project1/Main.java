@@ -6,9 +6,4 @@ public class Main {
 		System.out.println("Hello");
 	}
 
-	// Barcelona1
-	// Barcelona2
-	// Girona1
-	// Girona2
-
 }
