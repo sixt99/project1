@@ -28,7 +28,7 @@ public class PrintingManager {
 
 		System.out.println(
 				"There is a file called 'words'. Write in that file the list of words you need to learn and their translation, like in the example:");
-		System.out.println("\tRiver: el río");
+		System.out.println("\tRiver: el rÃ­o");
 		System.out.println("\tBook: el libro");
 		System.out.println("\tApple: la manzana");
 		System.out.println(

@@ -58,6 +58,7 @@ public class ActionManager {
 				map.put(word[0], word[1]);
 			}
 			sc.close();
+			System.out.println(map);
 		} catch (FileNotFoundException e) {
 			System.out.println("File not found.");
 			e.printStackTrace();
