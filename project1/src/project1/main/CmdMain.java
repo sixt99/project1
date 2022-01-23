@@ -8,11 +8,13 @@ import project1.print.PrintingManager;
 public class CmdMain {
 
 	public static void main(String[] args) {
+
 		PrintingManager.getInstance().printWelcome();
 		Scanner sc = new Scanner(System.in);
 		boolean exit = false;
 
 		while (!exit) {
+			PrintingManager.getInstance().printMenu();
 			String action = sc.nextLine();
 
 			switch (action) {
@@ -24,6 +26,10 @@ public class CmdMain {
 				System.out.println("Let's go! Enter '" + PrintingManager.INPUT_EXIT + "' when you want to finish.");
 				ActionManager.getInstance().startRandomTesting(sc);
 				exit = true;
+				break;
+
+			case PrintingManager.INPUT_SEE_CONTACT:
+				PrintingManager.getInstance().printContact();
 				break;
 
 			case PrintingManager.INPUT_EXIT:
