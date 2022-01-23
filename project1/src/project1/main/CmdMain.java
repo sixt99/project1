@@ -2,7 +2,7 @@ package project1.main;
 
 import java.util.Scanner;
 
-import action.ActionManager;
+import project1.action.ActionManager;
 import project1.print.PrintingManager;
 
 public class CmdMain {
