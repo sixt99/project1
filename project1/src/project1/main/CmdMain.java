@@ -1,11 +1,11 @@
-package project1.CmdMain;
+package project1.main;
 
 import java.util.Scanner;
 
 import action.ActionManager;
 import project1.print.PrintingManager;
 
-public class Main {
+public class CmdMain {
 
 	public static void main(String[] args) {
 		PrintingManager.getInstance().printWelcome();
