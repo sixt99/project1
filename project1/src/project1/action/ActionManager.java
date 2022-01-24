@@ -5,6 +5,7 @@ import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 import java.util.Scanner;
@@ -15,6 +16,8 @@ import project1.print.PrintingManager;
 public class ActionManager {
 
 	private static ActionManager instance = null;
+	public static final String INPUT_ADD_WORDS = "Add";
+	public static final String INPUT_SET_LANGUAGE = "Set language";
 
 	public static ActionManager getInstance() {
 		if (instance == null) {
@@ -23,24 +26,41 @@ public class ActionManager {
 		return instance;
 	}
 
-	public void addWords(String filePath, Scanner sc) throws FileNotFoundException, UnsupportedEncodingException {
+	public void addWords(PrintWriter writer, File file, Scanner sc) throws FileNotFoundException, UnsupportedEncodingException {
 
 		boolean exit = false;
 
 		while (!exit) {
-
+			System.out.println("Adding a new word.");
+			System.out.print("Native:");
 			String production = sc.next();
 			if (production.equals(PrintingManager.INPUT_EXIT)) {
 				exit = true;
 			} else {
 				Concept concept = new Concept();
 				concept.setNativeWord(production);
+				System.out.print("Translation:");
 				concept.setTranslation(sc.next());
-				PrintWriter writer = new PrintWriter(filePath, "UTF-8");
-				writer.println(concept.toString());
-				writer.close();
+				// If it is not already in the list, we add it
+				if (!alreadyInList(concept, file)) {
+					writer.append("\n");
+					writer.append(concept.toString());
+				}
 			}
 		}
+	}
+
+	private boolean alreadyInList(Concept concept, File file) {
+		List<Concept> listConcepts = readWords(file);
+		for (Concept c: listConcepts) {
+			String cString = c.toString();
+			String conceptString = concept.toString();
+			if (conceptString.equalsIgnoreCase(cString)) {
+				System.out.println("This word was already at the list!");
+				return true;
+			}
+		}
+		return false;
 	}
 
 	public void startRandomTesting(Scanner sc) {
@@ -56,9 +76,9 @@ public class ActionManager {
 
 			Concept randomConcept = (Concept) arrayConcepts[generator.nextInt(arrayConcepts.length)];
 			String randomNative = randomConcept.getNativeWord();
-			String answer = listConcepts.get(randomNativeWord);
+			String answer = randomConcept.getTranslation();
 
-			System.out.println(randomNativeWord);
+			System.out.println(randomNative);
 			while (!exit2) {
 				String word = sc.nextLine();
 				if (word.equals(answer)) {
@@ -76,9 +96,8 @@ public class ActionManager {
 	}
 
 	private List<Concept> readWords(File file) {
-		// TODO
-		// Read from yaml files.
-		List<Concept> listConcepts = new ArrayList();
+		// TODO: Read from yaml files.
+		List<Concept> listConcepts = new ArrayList<Concept>();
 		try {
 			Scanner sc = new Scanner(file);
 			String[] word;
