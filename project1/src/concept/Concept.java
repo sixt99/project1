@@ -1,4 +1,4 @@
-package project1.concept;
+package concept;
 
 public class Concept {
 	public String nativeWord;

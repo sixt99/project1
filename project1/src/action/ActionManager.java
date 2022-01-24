@@ -1,7 +1,9 @@
-package project1.action;
+package action;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.InputStream;
 import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
@@ -10,8 +12,10 @@ import java.util.List;
 import java.util.Random;
 import java.util.Scanner;
 
-import project1.concept.Concept;
-import project1.print.PrintingManager;
+
+
+import concept.Concept;
+import print.PrintingManager;
 
 public class ActionManager {
 
@@ -91,9 +95,10 @@ public class ActionManager {
 				}
 			}
 			exit2 = false;
-
 		}
 	}
+
+
 
 	private List<Concept> readWords(File file) {
 		// TODO: Read from yaml files.

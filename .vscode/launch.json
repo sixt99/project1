@@ -6,6 +6,12 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Launch Current File",
+            "request": "launch",
+            "mainClass": "${file}"
+        },
+        {
+            "type": "java",
             "name": "Launch CmdMain",
             "request": "launch",
             "mainClass": "project1.main.CmdMain",

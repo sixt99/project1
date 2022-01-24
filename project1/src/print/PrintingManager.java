@@ -1,4 +1,4 @@
-package project1.print;
+package print;
 
 public class PrintingManager {
 

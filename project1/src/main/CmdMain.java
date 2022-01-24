@@ -1,4 +1,4 @@
-package project1.main;
+package main;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -9,8 +9,8 @@ import java.lang.reflect.Array;
 import java.util.Arrays;
 import java.util.Scanner;
 
-import project1.action.ActionManager;
-import project1.print.PrintingManager;
+import action.ActionManager;
+import print.PrintingManager;
 
 
 
