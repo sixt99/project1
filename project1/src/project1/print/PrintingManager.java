@@ -3,6 +3,7 @@ package project1.print;
 public class PrintingManager {
 
 	public static final String GOODBYE_MESSAGE = "Hope you had fun!";
+	public static final String INPUT_ADD_WORDS = "Add words";
 	public static final String INPUT_EXIT = "Exit";
 	public static final String INPUT_SEE_CONTACT = "See contact";
 	public static final String INPUT_SEE_INSTRUCTIONS = "See instructions";

@@ -22,6 +22,10 @@ public class CmdMain {
 				PrintingManager.getInstance().printInstructions();
 				break;
 
+			case ActionManager.INPUT_ADD_WORDS:
+				ActionManager.getInstance().addWords(filePath, sc);
+				break;
+
 			case PrintingManager.INPUT_START:
 				System.out.println("Let's go! Enter '" + PrintingManager.INPUT_EXIT + "' when you want to finish.");
 				ActionManager.getInstance().startRandomTesting(sc);

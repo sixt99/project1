@@ -2,11 +2,14 @@ package project1.action;
 
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.util.HashMap;
-import java.util.Map;
+import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 import java.util.Scanner;
 
+import project1.concept.Concept;
 import project1.print.PrintingManager;
 
 public class ActionManager {
@@ -20,16 +23,40 @@ public class ActionManager {
 		return instance;
 	}
 
+	public void addWords(String filePath, Scanner sc) throws FileNotFoundException, UnsupportedEncodingException {
+
+		boolean exit = false;
+
+		while (!exit) {
+
+			String production = sc.next();
+			if (production.equals(PrintingManager.INPUT_EXIT)) {
+				exit = true;
+			} else {
+				Concept concept = new Concept();
+				concept.setNativeWord(production);
+				concept.setTranslation(sc.next());
+				PrintWriter writer = new PrintWriter(filePath, "UTF-8");
+				writer.println(concept.toString());
+				writer.close();
+			}
+		}
+	}
+
 	public void startRandomTesting(Scanner sc) {
-		Map<String, String> map = readWords(new File("project1/src/project1/file-demos/russian.txt"));
+		// TODO
+		List<Concept> listConcepts = readWords(new File("project1/src/project1/file-demos/russian.txt"));
+		Object[] arrayConcepts = listConcepts.toArray();
+
 		boolean exit1 = false;
 		boolean exit2 = false;
 		Random generator = new Random();
 
 		while (!exit1) {
-			Object[] nativeWords = map.keySet().toArray();
-			String randomNativeWord = (String) nativeWords[generator.nextInt(nativeWords.length)];
-			String answer = map.get(randomNativeWord);
+
+			Concept randomConcept = (Concept) arrayConcepts[generator.nextInt(arrayConcepts.length)];
+			String randomNative = randomConcept.getNativeWord();
+			String answer = listConcepts.get(randomNativeWord);
 
 			System.out.println(randomNativeWord);
 			while (!exit2) {
@@ -49,20 +76,24 @@ public class ActionManager {
 	}
 
 	private List<Concept> readWords(File file) {
-		Map<String, String> map = new HashMap<>();
+		// TODO
+		// Read from yaml files.
+		List<Concept> listConcepts = new ArrayList();
 		try {
 			Scanner sc = new Scanner(file);
 			String[] word;
 			while (sc.hasNextLine()) {
 				word = sc.nextLine().split(": ");
-				map.put(word[0], word[1]);
+				Concept concept = new Concept();
+				concept.setNativeWord(word[0]);
+				concept.setTranslation(word[1]);
+				listConcepts.add(concept);
 			}
 			sc.close();
 		} catch (FileNotFoundException e) {
 			System.out.println("File not found.");
 			e.printStackTrace();
 		}
-		return map;
+		return listConcepts;
 	}
-
 }
