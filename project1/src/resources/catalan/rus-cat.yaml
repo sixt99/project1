@@ -1,0 +1,9 @@
+# This file contains the catalan to russian (and viceversa) words translation
+# The id is just to ennumerate cases and type to constatate that we are translating russian-catalan
+
+id: case_1
+native: catalan
+translation: russian
+russian: дом
+catalan: casa
+---

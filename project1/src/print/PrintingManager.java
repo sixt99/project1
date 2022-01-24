@@ -1,14 +1,16 @@
-package project1.print;
+package print;
 
 public class PrintingManager {
 
 	public static final String GOODBYE_MESSAGE = "Hope you had fun!";
+	public static final String INPUT_ADD_WORDS = "Add words";
 	public static final String INPUT_EXIT = "Exit";
 	public static final String INPUT_SEE_CONTACT = "See contact";
 	public static final String INPUT_SEE_INSTRUCTIONS = "See instructions";
 	public static final String INPUT_START = "Start";
 	public static final String INVALID_ACTION = "Hey, that makes no sense.";
 	public static final String WRONG_WORD = "Hey, wrong answer.";
+	private static final String INPUT_SET_LANGUAGE = "Set language";
 
 	private static PrintingManager instance = null;
 
@@ -38,9 +40,11 @@ public class PrintingManager {
 	public void printMenu() {
 		System.out.println("What do you want to do?");
 		System.out.println("\t(1). " + INPUT_START);
-		System.out.println("\t(2). " + INPUT_SEE_INSTRUCTIONS);
-		System.out.println("\t(3). " + INPUT_SEE_CONTACT);
-		System.out.println("\t(4). " + INPUT_EXIT);
+		System.out.println("\t(2). " + INPUT_ADD_WORDS);
+		System.out.println("\t(3). " + INPUT_SET_LANGUAGE);
+		System.out.println("\t(4). " + INPUT_SEE_INSTRUCTIONS);
+		System.out.println("\t(5). " + INPUT_SEE_CONTACT);
+		System.out.println("\t(6). " + INPUT_EXIT);
 	}
 
 	public void printWelcome() {
