@@ -21,7 +21,7 @@ public class ActionManager {
 	}
 
 	public void startRandomTesting(Scanner sc) {
-		Map<String, String> map = readWords(new File("words"));
+		Map<String, String> map = readWords(new File("project1/src/project1/file-demos/russian.txt"));
 		boolean exit1 = false;
 		boolean exit2 = false;
 		Random generator = new Random();
@@ -48,13 +48,13 @@ public class ActionManager {
 		}
 	}
 
-	private Map<String, String> readWords(File file) {
+	private List<Concept> readWords(File file) {
 		Map<String, String> map = new HashMap<>();
 		try {
 			Scanner sc = new Scanner(file);
 			String[] word;
 			while (sc.hasNextLine()) {
-				word = sc.nextLine().split(":\s");
+				word = sc.nextLine().split(": ");
 				map.put(word[0], word[1]);
 			}
 			sc.close();
